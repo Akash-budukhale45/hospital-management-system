@@ -1,0 +1,135 @@
+/* =====================================================
+   COMMON NAVBAR CSS
+   Project: Digital Information System in Hospitality
+   Style: Professional hotel booking platform
+===================================================== */
+
+* {
+  box-sizing: border-box;
+}
+
+/* Navbar Container */
+.navbar {
+  width: 100%;
+  height: 70px;
+  padding: 0 48px;
+  background-color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #e5e7eb;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  font-family: "Segoe UI", Tahoma, sans-serif;
+}
+
+/* Logo */
+.logo {
+  font-size: 24px;
+  font-weight: 700;
+  color: #111827;
+  letter-spacing: 0.4px;
+}
+
+.logo span {
+  color: #2563eb;
+}
+
+/* Right Nav */
+.navbar-right {
+  display: flex;
+  align-items: center;
+}
+
+/* Nav Links */
+.navbar-right a {
+  text-decoration: none;
+  margin-left: 24px;
+  font-size: 15px;
+  font-weight: 500;
+  color: #374151;
+  transition: all 0.25s ease;
+  position: relative;
+}
+
+/* Hover underline */
+.navbar-right a::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2px;
+  left: 0;
+  bottom: -6px;
+  background-color: #2563eb;
+  transition: width 0.25s ease;
+}
+
+.navbar-right a:hover::after {
+  width: 100%;
+}
+
+.navbar-right a:hover {
+  color: #2563eb;
+}
+
+/* Active link */
+.navbar-right a.active {
+  color: #2563eb;
+  font-weight: 600;
+}
+
+/* Register button */
+.navbar-right .btn {
+  padding: 7px 16px;
+  border-radius: 6px;
+  background-color: #2563eb;
+  color: #ffffff;
+  margin-left: 18px;
+  font-weight: 500;
+}
+
+.navbar-right .btn:hover {
+  background-color: #1e40af;
+}
+
+/* User Name */
+#userName {
+  margin-left: 24px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #111827;
+}
+
+/* Logout */
+#logoutLink {
+  margin-left: 16px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #dc2626;
+  cursor: pointer;
+}
+
+#logoutLink:hover {
+  text-decoration: underline;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .navbar {
+    padding: 0 20px;
+    flex-direction: column;
+    height: auto;
+    align-items: flex-start;
+  }
+
+  .navbar-right {
+    width: 100%;
+    margin-top: 10px;
+    flex-wrap: wrap;
+  }
+
+  .navbar-right a {
+    margin: 10px 15px 0 0;
+  }
+}
