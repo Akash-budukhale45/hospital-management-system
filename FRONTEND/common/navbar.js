@@ -1,6 +1,5 @@
-// navbar.js (FINAL SAFE VERSION)
-
 document.addEventListener("DOMContentLoaded", () => {
+
   const token = localStorage.getItem("token");
 
   const loginLink = document.getElementById("loginLink");
@@ -8,25 +7,38 @@ document.addEventListener("DOMContentLoaded", () => {
   const logoutLink = document.getElementById("logoutLink");
   const userNameSpan = document.getElementById("userName");
 
+  // USER LOGGED IN
   if (token) {
-    // Logged in
-    loginLink && (loginLink.style.display = "none");
-    registerLink && (registerLink.style.display = "none");
 
-    logoutLink && (logoutLink.style.display = "inline");
-    userNameSpan && (userNameSpan.style.display = "inline");
-    if (userNameSpan) userNameSpan.textContent = "Logged In";
-  } else {
-    // Logged out
-    loginLink && (loginLink.style.display = "inline");
-    registerLink && (registerLink.style.display = "inline");
+    if(loginLink) loginLink.style.display = "none";
+    if(registerLink) registerLink.style.display = "none";
 
-    logoutLink && (logoutLink.style.display = "none");
-    userNameSpan && (userNameSpan.style.display = "none");
+    if(userNameSpan){
+      userNameSpan.style.display = "inline";
+      userNameSpan.textContent = "My Profile";
+    }
+
+    // ❌ Navbar logout hide
+    if(logoutLink){
+      logoutLink.style.display = "none";
+    }
+
   }
 
-  logoutLink?.addEventListener("click", () => {
-    localStorage.removeItem("token");
-    window.location.href = "../userlogin/login.html";
-  });
+  // USER LOGGED OUT
+  else {
+
+    if(loginLink) loginLink.style.display = "inline";
+    if(registerLink) registerLink.style.display = "inline";
+
+    if(userNameSpan){
+      userNameSpan.style.display = "none";
+    }
+
+    if(logoutLink){
+      logoutLink.style.display = "none";
+    }
+
+  }
+
 });

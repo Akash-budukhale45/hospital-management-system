@@ -21,6 +21,10 @@ const hotelSchema = new mongoose.Schema(
       min: 1,
       max: 5
     },
+    price: {
+      type: Number,
+      required: true
+    },
     images: [
       {
         type: String
@@ -29,7 +33,15 @@ const hotelSchema = new mongoose.Schema(
     averageRating: {
       type: Number,
       default: 0
+    },
+
+    // ✅ OWNER FIELD ADDED
+    owner: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
+      required: true
     }
+
   },
   { timestamps: true }
 );

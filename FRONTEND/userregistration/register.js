@@ -6,6 +6,7 @@ document.getElementById("registerForm").addEventListener("submit", async (e) => 
   const name = document.getElementById("name").value;
   const email = document.getElementById("email").value;
   const password = document.getElementById("password").value;
+  const adminCode = document.getElementById("adminCode").value; // ✅ ADDED
 
   try {
     const res = await fetch("http://localhost:5000/api/auth/register", {
@@ -13,7 +14,12 @@ document.getElementById("registerForm").addEventListener("submit", async (e) => 
       headers: {
         "Content-Type": "application/json"
       },
-      body: JSON.stringify({ name, email, password })
+      body: JSON.stringify({ 
+        name, 
+        email, 
+        password, 
+        adminCode   // ✅ ADDED
+      })
     });
 
     const data = await res.json();

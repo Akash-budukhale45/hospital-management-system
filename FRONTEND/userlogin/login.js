@@ -22,10 +22,19 @@ document.getElementById("loginForm").addEventListener("submit", async (e) => {
       return;
     }
 
+    // ✅ Save login data
     localStorage.setItem("token", data.token);
+    localStorage.setItem("role", data.user.role);
+    localStorage.setItem("user", JSON.stringify(data.user));  // ⭐ IMPORTANT
+
     alert("Login successful");
 
-    window.location.href = "../homepage/index.html";
+    // ✅ Role based redirect
+    if (data.user.role === "admin") {
+      window.location.href = "../admin/admin.html";
+    } else {
+      window.location.href = "../homepage/index.html";
+    }
 
   } catch (err) {
     alert("Server error");

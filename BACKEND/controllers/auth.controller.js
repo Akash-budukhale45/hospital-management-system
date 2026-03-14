@@ -5,7 +5,7 @@ import jwt from "jsonwebtoken";
 // ================= REGISTER =================
 export const registerUser = async (req, res) => {
   try {
-    const { name, email, password } = req.body;
+    const { name, email, password, adminCode } = req.body;
 
     if (!name || !email || !password) {
       return res.status(400).json({ message: "All fields are required" });
@@ -16,13 +16,21 @@ export const registerUser = async (req, res) => {
       return res.status(400).json({ message: "User already exists" });
     }
 
-    const salt = await bcrypt.genSalt(10);
-    const hashedPassword = await bcrypt.hash(password, salt);
+    // ❌ Removed manual hashing (model already does it)
+
+    // ✅ Default role
+    let role = "user";
+
+    // ✅ Check Admin Secret Code
+    if (adminCode && adminCode === process.env.ADMIN_SECRET_CODE) {
+      role = "admin";
+    }
 
     const user = await User.create({
       name,
       email,
-      password: hashedPassword
+      password,   // ✅ plain password (model will hash it)
+      role
     });
 
     res.status(201).json({
@@ -65,7 +73,8 @@ export const loginUser = async (req, res) => {
       user: {
         id: user._id,
         name: user.name,
-        email: user.email
+        email: user.email,
+        role: user.role
       }
     });
 

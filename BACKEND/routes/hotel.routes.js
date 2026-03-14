@@ -2,20 +2,34 @@ import express from "express";
 import {
   getAllHotels,
   getHotelById,
-  getTopRatedHotels
+  getTopRatedHotels,
+  createHotel
 } from "../controllers/hotel.controller.js";
+
+import authMiddleware from "../middleware/auth.middleware.js";
+import adminMiddleware from "../middleware/adminMiddleware.js";
 
 const router = express.Router();
 
-// ================= PUBLIC ROUTES =================
+// ================= CREATE HOTEL (Admin Only) =================
+router.post(
+  "/",
+  authMiddleware,
+  adminMiddleware,
+  createHotel
+);
 
-// Top 5 rated hotels (⭐ sabse upar)
+// ================= TOP 5 RATED HOTELS =================
 router.get("/top", getTopRatedHotels);
 
-// All hotels
-router.get("/", getAllHotels);
+// ================= ALL HOTELS =================
+router.get(
+  "/",
+  authMiddleware,   // ✅ ADD THIS
+  getAllHotels
+);
 
-// Single hotel by ID
+// ================= SINGLE HOTEL =================
 router.get("/:id", getHotelById);
 
 export default router;

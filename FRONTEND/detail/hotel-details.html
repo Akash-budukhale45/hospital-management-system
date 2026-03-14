@@ -1,23 +1,52 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Hotel Details | Digital Hospitality System</title>
+  
+  <link rel="stylesheet" href="../common/navbar.css" />
   <link rel="stylesheet" href="hotel-details.css" />
 </head>
 <body>
 
   <!-- ===== NAVBAR ===== -->
   <header class="navbar">
-    <div class="logo">Hospita<span>Sys</span></div>
-    <nav>
-      <a href="../homepage/index.html">Home</a>
-      <a href="../hotellist/hotels.html">Hotels</a>
-      <a href="../userlogin/login.html">Login</a>
-      <a href="../userregistration/register.html" class="btn">Register</a>
-    </nav>
-  </header>
+
+  <div class="logo">Hospita<span>Sys</span></div>
+
+  <div class="navbar-right">
+
+    <a href="../homepage/index.html">Home</a>
+
+    <a href="../hotellist/hotels.html">Hotels</a>
+
+    <a href="../userlogin/login.html" id="loginLink">
+      Login
+    </a>
+
+    <a href="../userregistration/register.html"
+       id="registerLink"
+       class="btn">
+       Register
+    </a>
+
+    <a href="../user/profile.html"
+       id="userName"
+       style="display:none;">
+       My Profile
+    </a>
+
+    <a href="#"
+       id="logoutLink"
+       style="display:none;">
+       Logout
+    </a>
+
+  </div>
+
+</header>
 
   <!-- ===== HOTEL INFO ===== -->
   <section class="hotel-info" id="hotelInfo"></section>
@@ -91,7 +120,7 @@
   <footer class="footer">
     <p>© 2025 Digital Information System in Hospitality</p>
   </footer>
-
+   <script src="../common/navbar.js"></script>
   <script src="hotel-details.js"></script>
 </body>
 </html>
